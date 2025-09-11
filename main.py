@@ -69,11 +69,11 @@ def main():
                 (By.CSS_SELECTOR, f'a[title="{search_keyword}: txt檔案.zip"]')
             )
         )
-        zip_filename = file_elem.get_attribute('download') or file_elem.get_attribute('href').split('/')[-1]
+        zip_file_name = file_elem.get_attribute('download') or file_elem.get_attribute('href').split('/')[-1]
 
         # 下載並解壓縮
-        fileUrl = file_elem.get_attribute('href')
-        response = requests.get(fileUrl, timeout=30)
+        file_url = file_elem.get_attribute('href')
+        response = requests.get(file_url, timeout=30)
         with zipfile.ZipFile(io.BytesIO(response.content)) as z:
             file_list = z.namelist()
             with open(f'data.csv', mode='w', newline='', encoding='utf-8') as csvfile:
@@ -92,7 +92,7 @@ def main():
         # 檔案資訊、發佈日期、更新日期寫入 info.json
         info = {
             'title': search_keyword,
-            'zip_filename': zip_filename,
+            'zip_file_name': zip_file_name,
             'pub_date': pub_date,
             'update_date': update_date
         }
