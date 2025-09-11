@@ -78,9 +78,9 @@ def main():
             file_list = z.namelist()
             with open(f'data.csv', mode='w', newline='', encoding='utf-8') as csvfile:
                 writer = csv.writer(csvfile)
-                for filename in file_list:
-                    if filename.endswith('.TXT'):
-                        with z.open(filename) as f:
+                for file in file_list:
+                    if file.endswith('.TXT'):
+                        with z.open(file) as f:
                             content = f.read().decode('big5', errors='ignore')
                             lines = content.splitlines()
                             for line in lines:
