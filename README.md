@@ -18,7 +18,7 @@
    ```
 3. 執行主程式：
    ```bash
-   python crawl-data.py
+   python main.py
    ```
 
 ### 注意事項
