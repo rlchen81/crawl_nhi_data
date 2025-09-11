@@ -1,5 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -61,8 +60,8 @@ def main():
 
         # 比對 JSON 的更新日期 (如果更新日期為空值，或比對更新日期相同，就不爬取檔案)
         last_update_date = info.get('update_date')
-        if not update_date or update_date == last_update_date:
-            return
+        if (not update_date or update_date == last_update_date) and Path('data.csv').exists():
+            return      
 
         # 取得 zip 檔案名稱
         file_elem = WebDriverWait(driver, 10).until(
@@ -92,7 +91,7 @@ def main():
 
         # 檔案資訊、發佈日期、更新日期寫入 info.json
         info = {
-            'name': search_keyword,
+            'title': search_keyword,
             'zip_filename': zip_filename,
             'pub_date': pub_date,
             'update_date': update_date
