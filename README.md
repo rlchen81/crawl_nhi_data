@@ -23,6 +23,5 @@
 
 ### 注意事項
 
-- ChromeDriver 版本需與 Chrome 相符
 - info.json 會自動產生與更新，請勿手動修改
 - 請確認網路連線正常
