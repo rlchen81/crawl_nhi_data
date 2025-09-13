@@ -11,7 +11,7 @@
 
 ### 執行方式
 
-1. 安裝 Python 3、Chrome、ChromeDriver
+1. 安裝 Python 3、Chrome
 2. 安裝必要套件：
    ```bash
    pip install selenium requests
