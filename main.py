@@ -108,7 +108,7 @@ def main():
                             for line in lines:
                                 row = split_by_positions(line, col_positions[:13]) # 只取前13個欄位資料
                                 # 只保留 口服錠註記 為 'a1'、藥價參考截止日期 為 '9991231'，且藥價參考金額 不為 '0.00' 的資料
-                                if 'a1' in row[1] and '9991231' in row[6] and '0.00' not in row[4]:
+                                if 'a1' in row[1] and '9991231' in row[6] and row[4] != '0.00':
                                     writer.writerow(row)
         print("所有.txt內容已匯入 data.csv")
 
